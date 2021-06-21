@@ -3,7 +3,8 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
-dotenv.config({ path: './config.env' });
+//dotenv.config({ path: './config.env' });
+const keys = require('../config/keys')
 
 const User = mongoose.model('User');
 
