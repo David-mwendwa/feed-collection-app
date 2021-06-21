@@ -6,7 +6,6 @@ require('./models/User');
 require('./services/passport');
 
 const app = express();
-require('./routes/authRoutes')(app);
 
 app.use(
   cookieSession({
@@ -16,6 +15,8 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+require('./routes/authRoutes')(app);
 
 mongoose
   .connect(process.env.DATABASE, {
