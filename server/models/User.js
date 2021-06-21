@@ -5,10 +5,10 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
   googleId: {
     type: String,
-    require: true
-  }
-})
+    require: true,
+  },
+});
 
-const User = mongoose.model('User', userSchema)
+const User = mongoose.model('User', userSchema);
 
-module.exports = User
+module.exports = User;
