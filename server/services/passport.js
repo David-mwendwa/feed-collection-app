@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 //dotenv.config({ path: './config.env' });
-const keys = require('../config/keys')
+const keys = require('../config/keys');
 
 const User = mongoose.model('User');
 
@@ -21,8 +21,8 @@ passport.deserializeUser((id, done) => {
 passport.use(
   new GoogleStrategy(
     {
-      clientID: process.env.googleClientID,
-      clientSecret: process.env.googleClientSecret,
+      clientID: keys.googleClientID,
+      clientSecret: keys.googleClientSecret,
       callbackURL: '/auth/google/callback',
     },
     (accessToken, refreshToken, profile, done) => {
