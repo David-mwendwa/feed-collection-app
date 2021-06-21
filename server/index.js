@@ -1,15 +1,24 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cookieSession = require('cookie-session');
+const passport = require('passport');
 require('./models/User');
 require('./services/passport');
 
 const app = express();
 require('./routes/authRoutes')(app);
 
-const DB = process.env.DATABASE;
+app.use(
+  cookieSession({
+    maxAge: 30 * 34 * 60 * 60 * 1000,
+    keys: [process.env.cookieKey],
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 mongoose
-  .connect(DB, {
+  .connect(process.env.DATABASE, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
